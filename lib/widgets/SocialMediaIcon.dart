@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class SocialMediaIcon extends StatelessWidget {
-  // final String imagePath;
+  final String imagePath;
   final VoidCallback onPressed;
+  final bool networkImage;
 
   const SocialMediaIcon({
     super.key,
-    // required this.imagePath,
+    required this.imagePath,
     required this.onPressed,
+    this.networkImage = false,
   });
 
   @override
@@ -28,12 +30,20 @@ class SocialMediaIcon extends StatelessWidget {
             ),
           ],
         ),
-        // child: ClipOval(
-        //   child: Image.asset(
-        //     imagePath,
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+        child: Padding(
+          padding: const EdgeInsets.all(7.0),
+          child: ClipOval(
+            child: networkImage
+                ? Image.network(
+                    imagePath,
+                    fit: BoxFit.cover,
+                  )
+                : Image.asset(
+                    imagePath,
+                    fit: BoxFit.cover,
+                  ),
+          ),
+        ),
       ),
     );
   }

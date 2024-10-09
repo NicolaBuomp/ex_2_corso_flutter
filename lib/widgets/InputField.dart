@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class InputField extends StatelessWidget {
   final String hintText;
@@ -27,7 +28,14 @@ class InputField extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         TextField(
-          obscureText: isPassword,
+          obscureText:
+              isPassword, // Mostra gli asterischi se è un campo password
+          keyboardType: isPassword
+              ? TextInputType.text
+              : TextInputType.emailAddress, // Controlla il tipo di tastiera
+          inputFormatters: [
+            FilteringTextInputFormatter.deny(RegExp(r'\s')), // Negare spazi
+          ],
           decoration: InputDecoration(
             prefixIcon: icon,
             prefixIconColor: Colors.white,

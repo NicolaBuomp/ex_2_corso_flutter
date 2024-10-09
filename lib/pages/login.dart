@@ -29,9 +29,10 @@ class _LoginPageState extends State<LoginPage> {
                   style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
+                      letterSpacing: 1.0,
                       color: Colors.white),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 28),
                 const InputField(
                   hintText: 'Enter your Email',
                   label: 'Email',
@@ -67,7 +68,9 @@ class _LoginPageState extends State<LoginPage> {
                   height: 55,
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/'); // Naviga a '/home'
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: const Color.fromARGB(255, 68, 68, 68),
                       backgroundColor: Colors.white,
@@ -75,7 +78,14 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                     ),
-                    child: const Text('LOGIN'),
+                    child: const Text(
+                      'LOGIN',
+                      style: TextStyle(
+                          letterSpacing: 1.2,
+                          fontSize: 18,
+                          color: Color(0xFF505050),
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -96,9 +106,15 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SocialMediaIcon(onPressed: () {}),
+                    SocialMediaIcon(
+                        imagePath: 'assets/icons/facebook.png',
+                        onPressed: () {}),
                     const SizedBox(width: 50),
-                    SocialMediaIcon(onPressed: () {}),
+                    SocialMediaIcon(
+                        networkImage: true,
+                        imagePath:
+                            'https://w7.pngwing.com/pngs/344/344/png-transparent-google-logo-google-logo-g-suite-google-text-logo-symbol-thumbnail.png',
+                        onPressed: () {}),
                   ],
                 ),
                 const SizedBox(height: 20),
